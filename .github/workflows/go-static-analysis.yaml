@@ -46,7 +46,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install yamllint
-      - run: at .github/workflows/yamllint-configuration.config
+      - run: cat .github/workflows/yamllint-configuration.config
       - run: yamllint .
   yaml_config_test:
     name: YAML Configuration Test
