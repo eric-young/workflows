@@ -48,10 +48,11 @@ jobs:
       - run: pip install yamllint
       - run: yamllint .
   yaml_config_test:
+    name: YAML Configuration Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Use configuration file
         run: |
-          cat .github/workflows/yamllint-configuration.yml
+          cat .github/workflows/yamllint-configuration.config
