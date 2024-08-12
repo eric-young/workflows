@@ -1,0 +1,39 @@
+name: Golang Static Analysis
+
+on:
+  workflow_call:
+
+jobs:
+  go_security_scan:
+    name: Go security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Run Go Security
+        uses: securego/gosec@master
+        with:
+          args: -exclude-dir=tests -exclude=G101 ./...
+  malware_security_scan:
+    name: Malware Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Run malware scan
+        uses: dell/common-github-actions/malware-scanner@main
+        with:
+          directories: .
+          options: -ri
+  yaml_lint_scan:
+    name: Yaml Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yamllint
+      - run: yamllint .
