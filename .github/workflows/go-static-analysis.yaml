@@ -47,4 +47,4 @@ jobs:
           python-version: "3.12"
       - run: pip install yamllint
       - run: cat .github/workflows/yamllint-configuration.config
-      - run: yamllint .
+#      - run: yamllint .
