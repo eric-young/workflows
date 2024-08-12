@@ -47,3 +47,11 @@ jobs:
           python-version: "3.12"
       - run: pip install yamllint
       - run: yamllint .
+  yaml_config_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use configuration file
+        run: |
+          cat .github/workflows/yamllint-configuration.yml
